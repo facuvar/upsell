@@ -107,7 +107,7 @@ export default function Panel() {
         </div>
       </div>
       {/* Gráfico de ventas por fecha */}
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
         <h3 className="font-semibold mb-4 text-green-600">Gráfico de Ventas</h3>
         <ResponsiveContainer width="100%" height={250}>
           <BarChart data={ventasPorFecha}>
@@ -119,7 +119,7 @@ export default function Panel() {
         </ResponsiveContainer>
       </div>
       {/* Productos más vendidos */}
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-lg shadow p-6 mb-8">
         <h3 className="font-semibold mb-4 text-green-600">Productos más vendidos</h3>
         <ResponsiveContainer width="100%" height={250}>
           <PieChart>
