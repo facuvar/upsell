@@ -1,18 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
+import Layout from "./components/Layout";
+import Panel from "./pages/Panel";
+import VentasUpsell from "./pages/VentasUpsell";
+import Clientes from "./pages/Clientes";
+import Configuracion from "./pages/Configuracion";
+import Carrito from "./pages/Carrito";
+
+const pages = {
+  "/": <Panel />,
+  "/ventas": <VentasUpsell />,
+  "/clientes": <Clientes />,
+  "/configuracion": <Configuracion />,
+  "/carrito": <Carrito />,
+};
 
 function App() {
+  const [active, setActive] = useState("/");
+
   return (
-    <div className="min-h-screen bg-white text-gray-900">
-      <header className="shadow p-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-green-600">Upsell Dashboard</h1>
-        {/* Aquí irá el menú de usuario/configuración */}
-      </header>
-      <main className="p-6">
-        <div className="rounded-lg border border-gray-100 bg-gray-50 p-8 text-center text-gray-400">
-          <p className="text-lg">¡Dashboard en construcción! 🚀</p>
-        </div>
-      </main>
-    </div>
+    <Layout active={active} onNavigate={setActive}>
+      {pages[active] || <Panel />}
+    </Layout>
   );
 }
 
