@@ -13,7 +13,15 @@ export default function Carrito() {
   return (
     <div className="flex justify-center">
       <div className="w-[350px] bg-white rounded-lg shadow p-6 mt-4">
-        <h2 className="text-xl font-bold mb-6 text-green-600 text-center">Carrito (Simulación Mobile)</h2>
+        {/* Texto superior */}
+        <div className="text-center mb-4">
+          <span className="text-lg font-bold text-green-700">Distribuidora Norte</span>
+        </div>
+        {/* Mensaje de agradecimiento y sugerencia */}
+        <div className="text-gray-600 text-sm text-center mb-6">
+          Estimado cliente, gracias por su pedido!<br />
+          Le enviamos una sugerencia de productos que no fueron incluidos en su última compra que consideramos que le pueden interesar.
+        </div>
         <div className="divide-y">
           {productos.map(p => (
             <div key={p.id} className="flex items-center justify-between py-3">
@@ -27,6 +35,10 @@ export default function Carrito() {
               />
             </div>
           ))}
+        </div>
+        {/* Mensaje de 48hs */}
+        <div className="mt-6 text-center text-xs text-gray-500 font-medium">
+          Este pedido puede ser realizado dentro de las próximas 48Hs
         </div>
         <div className="mt-6 text-right font-bold text-green-600 text-lg">
           Total: ${total.toLocaleString("es-AR")}

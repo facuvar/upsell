@@ -17,13 +17,66 @@ export const productos = [
 ];
 
 export const ventas = [
-  { id: 1, clienteId: 1, productoId: 1, cantidad: 10, total: 15000, fecha: "2024-06-01" },
-  { id: 2, clienteId: 2, productoId: 2, cantidad: 5, total: 4000, fecha: "2024-06-02" },
-  { id: 3, clienteId: 3, productoId: 3, cantidad: 8, total: 12000, fecha: "2024-06-03" },
-  { id: 4, clienteId: 1, productoId: 2, cantidad: 12, total: 9600, fecha: "2024-06-04" },
-  { id: 5, clienteId: 2, productoId: 1, cantidad: 7, total: 10500, fecha: "2024-06-05" },
-  { id: 6, clienteId: 4, productoId: 4, cantidad: 15, total: 18000, fecha: "2024-06-06" },
-  { id: 7, clienteId: 5, productoId: 5, cantidad: 20, total: 9000, fecha: "2024-06-07" },
+  {
+    id: 1,
+    clienteId: 1,
+    fecha: "2024-06-01",
+    items: [
+      { productoId: 1, cantidad: 10, precioUnitario: 1500 },
+      { productoId: 2, cantidad: 5, precioUnitario: 800 },
+    ],
+  },
+  {
+    id: 2,
+    clienteId: 2,
+    fecha: "2024-06-02",
+    items: [
+      { productoId: 2, cantidad: 5, precioUnitario: 800 },
+      { productoId: 3, cantidad: 2, precioUnitario: 1500 },
+    ],
+  },
+  {
+    id: 3,
+    clienteId: 3,
+    fecha: "2024-06-03",
+    items: [
+      { productoId: 3, cantidad: 8, precioUnitario: 1500 },
+    ],
+  },
+  {
+    id: 4,
+    clienteId: 1,
+    fecha: "2024-06-04",
+    items: [
+      { productoId: 2, cantidad: 12, precioUnitario: 800 },
+      { productoId: 5, cantidad: 3, precioUnitario: 450 },
+    ],
+  },
+  {
+    id: 5,
+    clienteId: 2,
+    fecha: "2024-06-05",
+    items: [
+      { productoId: 1, cantidad: 7, precioUnitario: 1500 },
+    ],
+  },
+  {
+    id: 6,
+    clienteId: 4,
+    fecha: "2024-06-06",
+    items: [
+      { productoId: 4, cantidad: 15, precioUnitario: 1200 },
+      { productoId: 5, cantidad: 10, precioUnitario: 450 },
+    ],
+  },
+  {
+    id: 7,
+    clienteId: 5,
+    fecha: "2024-06-07",
+    items: [
+      { productoId: 5, cantidad: 20, precioUnitario: 450 },
+    ],
+  },
 ];
 
 export const tickets = [

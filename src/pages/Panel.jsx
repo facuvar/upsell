@@ -5,23 +5,21 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pi
 const COLORS = ["#4ade80", "#22d3ee", "#a78bfa", "#facc15", "#f472b6"];
 
 // KPIs
-const totalVentas = ventas.reduce((acc, v) => acc + v.total, 0);
+const totalVentas = ventas.reduce((acc, v) => acc + v.items.reduce((a, i) => a + i.cantidad * i.precioUnitario, 0), 0);
 const totalClientes = new Set(ventas.map(v => v.clienteId)).size;
-const totalProductos = new Set(ventas.map(v => v.productoId)).size;
+const totalProductos = new Set(ventas.flatMap(v => v.items.map(i => i.productoId))).size;
 const ticketPromedio = ventas.length ? Math.round(totalVentas / ventas.length) : 0;
 
 // Gráfico de ventas por fecha
-const ventasPorFecha = ventas.reduce((acc, v) => {
-  const fecha = v.fecha;
-  acc[fecha] = (acc[fecha] || 0) + v.total;
-  return acc;
-}, {});
-const dataVentas = Object.entries(ventasPorFecha).map(([fecha, total]) => ({ fecha, total }));
+const ventasPorFecha = ventas.map(v => ({
+  fecha: v.fecha,
+  total: v.items.reduce((a, i) => a + i.cantidad * i.precioUnitario, 0),
+}));
 
 // Productos más vendidos
 const productosVendidos = productos.map(p => ({
   nombre: p.nombre,
-  cantidad: ventas.filter(v => v.productoId === p.id).reduce((acc, v) => acc + v.cantidad, 0),
+  cantidad: ventas.reduce((acc, v) => acc + v.items.filter(i => i.productoId === p.id).reduce((a, i) => a + i.cantidad, 0), 0),
 }));
 const dataProductos = productosVendidos.filter(p => p.cantidad > 0);
 
@@ -51,7 +49,7 @@ export default function Panel() {
         <div className="bg-white rounded-lg shadow p-6">
           <h3 className="font-semibold mb-4 text-green-600">Gráfico de Ventas</h3>
           <ResponsiveContainer width="100%" height={250}>
-            <BarChart data={dataVentas}>
+            <BarChart data={ventasPorFecha}>
               <XAxis dataKey="fecha" />
               <YAxis />
               <Tooltip />
